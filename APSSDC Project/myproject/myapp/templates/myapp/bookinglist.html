@@ -1,0 +1,43 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Admin Booking List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>User ID</th>
+                <th>Bus ID</th>
+                <th>Bus Name</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Number of Seats</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.email }}</td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.userid }}</td>
+                <td>{{ book.busid }}</td>
+                <td>{{ book.bus_name }}</td>
+                <td>{{ book.source }}</td>
+                <td>{{ book.dest }}</td>
+                <td>{{ book.nos }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.date }}</td>
+                <td>{{ book.time }}</td>
+                <td>{{ book.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

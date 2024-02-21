@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 >Edit Bus</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

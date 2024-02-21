@@ -1,0 +1,48 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Admin Dashboard - List of Buses</h1>
+    <h2 >List of Buses</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-blue">Bus Name</th>
+                <th class="text-white">Source</th>
+                <th class="text-white">Destination</th>
+                <th class="text-white">Number of Seats</th>
+                <th class="text-white">Remaining</th>
+                <th class="text-white">Price</th>
+                <th class="text-white">Date</th>
+                <th class="text-white">Time</th>
+                <th class="text-white">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bus in buses %}
+            <tr class="{% cycle 'table-success' 'table-danger' %}">
+                <td >{{ bus.bus_name }}</td>
+                <td>{{ bus.source }}</td>
+                <td>{{ bus.dest }}</td>
+                <td>{{ bus.nos }}</td>
+                <td>{{ bus.rem}}</td>
+                <td>{{ bus.price }}</td>
+                <td>{{ bus.date }}</td>
+                <td>{{ bus.time }}</td>
+                <td>
+                    <a href="{% url 'edit_bus' bus.id %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'delete_bus' bus.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="text-white">Add Bus</h2>
+    <form method="post" action="{% url 'add_bus' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Add Bus</button>
+    </form>
+</div>
+{% endblock %}
